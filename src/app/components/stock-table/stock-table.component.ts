@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from 'src/app/services/stock.service';
 import { StockItem } from '../../model/StockItem';
+import { MatDialog } from '@angular/material';
+import { StockItemEditAmountDialogComponent } from '../stock-item-edit-amount-dialog/stock-item-edit-amount-dialog.component';
 
 @Component({
   selector: 'app-stock-table',
@@ -11,10 +13,15 @@ export class StockTableComponent implements OnInit {
 
   items: StockItem[];
 
-  constructor(private stockService: StockService) { }
+  constructor(private stockService: StockService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.stockService.getAll().subscribe(x => this.items = x);
   }
 
+  add(item) {
+    this.dialog.open(StockItemEditAmountDialogComponent, {
+      width: '250px'
+    });
+  }
 }
