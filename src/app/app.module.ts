@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { StockTableComponent } from './components/stock-table/stock-table.component';
 import { StockItemEditAmountDialogComponent } from './components/stock-item-edit-amount-dialog/stock-item-edit-amount-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

@@ -1,14 +1,22 @@
-<div >
-  Diff: <input />
+<h3 class="title">{{data.itemName}}</h3>
+<div>
+  Diff:
+  <span *ngIf="data.isSubstracting">
+    <strong class='diff-sign minus-sign'>-</strong>
+  </span>
+  <span *ngIf="!data.isSubstracting">
+    <strong class='diff-sign plus-sign'>+</strong>
+  </span>
+  <input [(ngModel)]="diff" />
 </div>
-<div >
-    Reason: 
-    <select>
-      <option>assd</option>
-      <option>assd</option>
-      <option>asdasasd</option>
-    </select>
-  </div>
-  <div>
-    <button>Save</button>
-  </div>
+<div *ngIf="data.isSubstracting">
+  Reason:
+  <select [(ngModel)]="reason">
+    <option>assd</option>
+    <option>assd</option>
+    <option>asdasasd</option>
+  </select>
+</div>
+<div>
+  <button (click)="save()">Save</button>
+</div>

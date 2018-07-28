@@ -19,4 +19,26 @@ export class StockService {
         });
     });
   }
+
+  updateItem(itemName: string, diff: number, reason?: string): Promise<any> {
+    const data: any = { diff };
+    if (reason) {
+      data.reason = reason;
+    }
+
+    return new Promise((resolve, reject) => {
+      this.angularFirestore.doc(`${this.authService.getStorePrefix()}/WarehouseStock/${itemName}`).ref.get()
+        .then(itemDoc => {
+          const newValue = itemDoc.data();
+          newValue.value.amount += diff;
+
+          const batch = this.angularFirestore.firestore.batch();
+          batch.update(this.angularFirestore.doc(`${this.authService.getStorePrefix()}/WarehouseStock/${itemName}`).ref, newValue);
+          batch.commit().then(x => {
+            this.angularFirestore.collection(`${this.authService.getStorePrefix()}/WarehouseStock/${itemName}/Activities`).add(data)
+              .then(resolve).catch(reject);
+          })
+        }).catch(reject);
+    });
+  }
 }

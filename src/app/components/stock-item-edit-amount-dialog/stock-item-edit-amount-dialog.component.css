@@ -1,0 +1,15 @@
+.diff-sign {
+    margin-right: 2px;
+}
+
+.minus-sign {
+    font-size: 20px;
+}
+
+.plus-sign {
+    font-size: 17px;
+}
+
+.title {
+    text-align: center;
+}
