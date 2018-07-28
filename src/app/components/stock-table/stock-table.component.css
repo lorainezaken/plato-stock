@@ -1,0 +1,28 @@
+th {
+    text-align: left;
+    width: 200px;
+    font-size: x-large;
+}
+
+tr {
+    height: 40px;
+}
+
+.amount-container {
+    display: grid;
+    grid-template-areas:
+      'value add sub space';
+}
+
+.value-container {
+    grid-area: value;
+    width: 30px;
+}
+
+.add-container {
+    grid-area: add;
+}
+
+.sub-container {
+    grid-area:sub;
+}

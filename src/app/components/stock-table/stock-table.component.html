@@ -8,10 +8,10 @@
   <tbody>
     <tr *ngFor="let item of items">
       <td>{{item.name}}</td>
-      <td>
-        {{item.amount}}
-        <button (click)="substract(item)">-</button>
-        <button (click)="add(item)">+</button>
+      <td class="amount-container">
+        <span class="value-container">{{item.amount}}</span>
+        <button class="add-container" (click)="substract(item)">-</button>
+        <button class="sub-container" (click)="add(item)">+</button>
       </td>
       <td>{{item.redLine}}</td>
       <td>{{item.units}}</td>
