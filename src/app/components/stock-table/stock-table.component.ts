@@ -20,18 +20,21 @@ export class StockTableComponent implements OnInit {
     this.stockService.getAll().subscribe(x => this.items = x);
   }
 
+  //Open add dialog
   add(item) {
     this.dialog.open(StockItemEditAmountDialogComponent, {
       data: this.getData(false, item.name)
     });
   }
 
+  //Open sub dialog
   substract(item) {
     this.dialog.open(StockItemEditAmountDialogComponent, {
       data: this.getData(true, item.name)
     });
   }
 
+  //construct data passed to dialog
   private getData(isSubstracting: boolean, itemName: string): ItemEditAmountData {
     return {
       isSubstracting,

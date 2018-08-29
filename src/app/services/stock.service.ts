@@ -11,6 +11,7 @@ export class StockService {
 
   constructor(private angularFirestore: AngularFirestore, private authService: AuthService) { }
 
+  //Get All Stock Items
   getAll(): Observable<StockItem[]> {
     return Observable.create(observer => {
       this.angularFirestore.collection<({ value: StockItem })>(`${this.authService.getStorePrefix()}/WarehouseStock`).valueChanges()
@@ -20,6 +21,7 @@ export class StockService {
     });
   }
 
+  //Update stock item
   updateItem(itemName: string, diff: number, reason?: string): Promise<any> {
     const data: any = { diff };
     if (reason) {
